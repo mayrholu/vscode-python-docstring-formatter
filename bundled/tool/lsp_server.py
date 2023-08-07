@@ -350,11 +350,6 @@ def _run_tool(extra_args: Sequence[str]) -> utils.RunResult:
         # sys.path and that might not work for this scenario next time around.
         with utils.substitute_attr(sys, "path", sys.path[:]):
             try:
-                # TODO: `utils.run_module` is equivalent to running `python -m <pytool-module>`.
-                # If your tool supports a programmatic API then replace the function below
-                # with code for your tool. You can also use `utils.run_api` helper, which
-                # handles changing working directories, managing io streams, etc.
-                # Also update `_run_tool_on_document` function and `utils.run_module` in `lsp_runner.py`.
                 result = utils.run_module(
                     module=TOOL_MODULE, argv=argv, use_stdin=True, cwd=cwd
                 )
